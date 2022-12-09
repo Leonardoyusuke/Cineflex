@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import styled from "styled-components";
+import GlobalStyle from "./components/GlobalStyled";
+import Movies from "./components/Movies";
+import Top from "./components/Top";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (<>
+    <GlobalStyle/>
+    <AppSize>
+    <Top/>
+    <Movies/>
+    </AppSize>
+
+    </>
   );
 }
+const AppSize = styled.div`
+width: 375px;
+height: 877px;`
 
 export default App;
+
