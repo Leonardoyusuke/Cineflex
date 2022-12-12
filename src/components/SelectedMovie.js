@@ -12,17 +12,39 @@ export default function SelectedMovie(){
 			setItens(resposta.data);
         requisicao.catch(error => alert(error.response.data.message));}
         )} , [])
-    console.log(itens.days)
+ 
     return(
         <>
-        <SelectMovie>Selecione o horário</SelectMovie>
-        
-        {itens.days? itens.days.map((movie) =>
-            <h1>{movie.weekday} </h1>
-             ):<></>}
-        </>
-    )
-}
+        <SelectMovie>Selecione o horário</SelectMovie> 
+        {itens.days? itens.days.map((movie) =><>
+            <FixLayout>{movie.weekday} - {movie.date}
+            <div>
+            <TimeButton>{movie.showtimes[0].name}</TimeButton>
+            <TimeButton>{movie.showtimes[1].name}</TimeButton></div>
+            </FixLayout>
+            </>
+            )
+            :<></>}
+    
+            </>
+        )
+    
+    } 
+const FixLayout = styled.div`
+display:flex;
+flex-direction: column;
+margin-left: 50px ;
+`
+
+const TimeButton = styled.button`
+width: 83px;
+height: 43px;
+background: #E8833A;
+border-radius: 3px;
+margin:15px;
+margin-right: 10px;
+margin-left: -5px;
+color:white`
 
 const BackgroundGray = styled.div`
 background-color: #C3CFD9;
