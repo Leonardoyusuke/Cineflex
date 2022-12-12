@@ -1,19 +1,24 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function SeatsStatus({s, }){
+export default function SeatsStatus({s, ids }){
 const [color,setColor] = useState("#C3CFD9")
 const [clicked,setClicked] = useState(false)
+
 
 function click(){
     if (s.isAvailable == true && clicked == false){
         setColor("#1AAE9E")
         setClicked(true)
+        ids.push(s.id)
+        console.log(ids)
     }
     else if(clicked==true){
         setColor("#C3CFD9")
         setClicked(false)
         console.log(clicked)
+        ids.remove(s.id)
+        console.log(ids)
     }
 
     else if(s.isAvailable==false){

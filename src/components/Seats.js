@@ -1,10 +1,14 @@
 import axios from "axios"
 import { useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import SeatsStatus from "./SeatsStatus";
 export default function Seats(){
     const { idSessao } = useParams();
+    const ids = [];
+    const navigate = useNavigate()
+    const [nome,setNome] = useState("");
+    const [cpf,setCpf] = useState("")
     const [session, setSession] = useState(undefined)
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`);
@@ -16,8 +20,11 @@ export default function Seats(){
 if (session === undefined) {
     return<div>Carregando...</div>
 }
-function selected(){
+function inputs(event){
+    event.preventDefault();
+    const requisicao = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many",{ids:[],name:nome, cpf:cpf} )
 
+    requisicao.then(() => navigate("/"))
 }
 
 return(
@@ -25,18 +32,18 @@ return(
     <SelectMovie>Selecione o(s) assento(s)</SelectMovie>
     <>
     <SetupSeats>
-    {session.seats.map((s)=> <SeatsStatus s={s}     />)}
+    {session.seats.map((s)=> <SeatsStatus s={s} ids={ids}    />)}
     </SetupSeats>
     <FixLayout>
     <SelectedSeat> <p>Selecionado</p></SelectedSeat>
     <AvailableSeat><p>Disponivel</p></AvailableSeat>
     <BusySeat><p>Indisponivel</p></BusySeat>
     </FixLayout>
-    <InputForm>
+    <InputForm onSubmit={inputs}>
     <H1>Nome do comprador:</H1>
-    <input type="Text" placeholder="Digite seu nome..." required/>
+    <input type="Text" placeholder="Digite seu nome..." onChange={e => setNome(e.target.value)} required/>
     <H1>CPF do comprador:</H1>
-    <input type="number" placeholder="Digite seu CPF..." required/>
+    <input type="number" placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)}required/>
     <Submit>Reservar assento(s)</Submit>
     </InputForm>
     <MiniMovie>
