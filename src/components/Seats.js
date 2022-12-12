@@ -32,10 +32,39 @@ return(
     <AvailableSeat><p>Disponivel</p></AvailableSeat>
     <BusySeat><p>Indisponivel</p></BusySeat>
     </FixLayout>
+    <InputForm>
+    <H1>Nome do comprador:</H1>
+    <input type="Text" placeholder="Digite seu nome..." required/>
+    <H1>CPF do comprador:</H1>
+    <input type="number" placeholder="Digite seu CPF..." required/>
+    <Submit>Reservar assento(s)</Submit>
+    </InputForm>
+    <MiniMovie>
+        <BackgroundMovie>
+        <img src={session.movie.posterURL} />                
+        </BackgroundMovie>
+        <Tittle>{session.movie.title} <div></div> {session.day.weekday}-{session.name}</Tittle>
+    </MiniMovie>
     </>
     </>
 )
 }
+const Submit = styled.button`
+width: 225px;
+height: 42px;
+background: #E8833A;
+border-radius: 3px;
+margin-top:20px;
+margin-left:30px`
+
+const H1 = styled.h1`
+margin-top:10px`
+
+
+const InputForm = styled.form`
+margin-top:50px;
+margin-left:20px;
+`
 
 const FixLayout = styled.div`
 display: flex;
@@ -89,3 +118,40 @@ align-items: center;
 text-align: center;
 color: #293845;
 justify-content: center`
+
+const BackgroundMovie = styled.div`
+width: 64px;
+height: 89px;
+background: #FFFFFF;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+border-radius: 2px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+top: 12px;
+left: 12px;
+`
+
+const MiniMovie = styled.div`
+position: relative;
+background-color:#DFE6ED;
+width: 375px;
+height: 117px;
+left: 0px;
+bottom: 0px;
+img{
+    width: 48px;
+height: 72px;
+}
+`
+const Tittle = styled.p`
+position:absolute;
+top:15px;
+left:100px;
+color: #293845;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 26px;
+line-height: 30px;`    
