@@ -2,7 +2,6 @@ import axios from "axios";
 import {useState, useEffect} from 'react'
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import SelectedMovie from "./SelectedMovie";
 
 export default function Movies(){
     const [itens,setItens] = useState([]);
@@ -21,7 +20,6 @@ export default function Movies(){
 			{itens.map((movie) =>
             <MovieBackground>
             <Link to={`/sessoes/${movie.id}`}  ><img src={movie.posterURL}  /></Link>
-             
              </MovieBackground>)
             }</LayoutFix>
 		
