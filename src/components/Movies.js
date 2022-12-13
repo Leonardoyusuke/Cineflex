@@ -19,7 +19,7 @@ export default function Movies(){
             <LayoutFix>
 			{itens.map((movie) =>
             <MovieBackground>
-            <Link to={`/sessoes/${movie.id}`}  ><img src={movie.posterURL}  /></Link>
+            <Link to={`/sessoes/${movie.id}`}  ><img data-test="movie" src={movie.posterURL}  /></Link>
              </MovieBackground>)
             }</LayoutFix>
 		

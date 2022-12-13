@@ -16,14 +16,14 @@ export default function SelectedMovie({itens,setItens}){
         <>
         <SelectMovie>Selecione o horário</SelectMovie> 
         {itens.days? itens.days.map((movie) =><>
-            <FixLayout>{movie.weekday} - {movie.date}
+            <FixLayout data-test="movie-day" >{movie.weekday} - {movie.date}
             <div>
-            <TimeButton>
+            <TimeButton data-test="showtime" >
             <Link to={`/assentos/${movie.showtimes[0].id}`}>
             {movie.showtimes[0].name}
             </Link>
             </TimeButton>
-            <TimeButton>
+            <TimeButton data-test="showtime" >
             <Link to={`/assentos/${movie.showtimes[1].id}`}>{movie.showtimes[1].name} 
             </Link>
             </TimeButton>
@@ -33,7 +33,7 @@ export default function SelectedMovie({itens,setItens}){
             </>
             )
             :<></>}
-            <MiniMovie>
+            <MiniMovie data-test="footer" >
                 <BackgroundMovie>
                 <img src={itens.posterURL} />
                 

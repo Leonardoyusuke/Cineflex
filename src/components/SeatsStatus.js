@@ -30,7 +30,7 @@ function click(seatNumber, seatId){
 }
 
 return (
-    <Seat 
+    <Seat data-test="seat"
     color={color}
     onClick={() => click(s.name,s.id)}
     isAvailable={s.isAvailable}>

@@ -24,7 +24,7 @@ function App() {
       <Route path="/" element={<Movies/>} />
       <Route path="/sessoes/:idFilme" element={<SelectedMovie itens={itens} setItens={setItens} />} />
       <Route path="/assentos/:idSessao" element={<Seats session={session} setSession={setSession} nome={nome} setNome={setNome} cpf={cpf} setCpf={setCpf} chosenSeats={chosenSeats} setChosenSeats={setChosenSeats} seatsId={seatsId} setSeatsId={setSeatsId} />} />
-      <Route path="/sucesso" element={<Sucess setChosenSeats={setChosenSeats} session={session} nome={nome} setNome={setNome} cpf={cpf} setCpf={setCpf} chosenSeats={chosenSeats} setChosenSeats={setChosenSeats} seatsId={seatsId} itens={itens} setSeatsId={setSeatsId} />} />
+      <Route path="/sucesso" element={<Sucess setChosenSeats={setChosenSeats} session={session} nome={nome} setNome={setNome} cpf={cpf} setCpf={setCpf} chosenSeats={chosenSeats} seatsId={seatsId} itens={itens} setSeatsId={setSeatsId} />} />
     </Routes>
     </AppSize>
     </BrowserRouter>

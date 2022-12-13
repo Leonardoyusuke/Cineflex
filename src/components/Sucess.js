@@ -13,18 +13,18 @@ export default function Sucess({chosenSeats,nome,cpf,itens,session, setChosenSea
     }
     return(<>
         <SelectMovie>Pedido feito com sucesso!</SelectMovie>
-
+        <div data-test="movie-info">
         <Tittles>Filme e sessão</Tittles>
         <P1>{itens.title}</P1>
-        <P1>{session.day.date}    {session.name}</P1>
-        <Tittles>Ingressos</Tittles>
+        <P1>{session.day.date}    {session.name}</P1></div>
+        <div data-test="seats-info" ><Tittles>Ingressos</Tittles>
        
         {chosenSeats.map((c)=><FixLayout2>Assentos {c}</FixLayout2>)}
-        
-        <Tittles>Comprador</Tittles>
+        </div>
+        <div data-test="client-info" ><Tittles>Comprador</Tittles>
         <P1>Nome:{nome}</P1>
-        <P1>CPF:{cpf}</P1>
-        <Link to={"/"}>
+        <P1>CPF:{cpf}</P1></div>
+        <Link data-test="go-home-btn" to={"/"}>
         <Fix>
         <Finish onClick={clean}>Voltar pra Home</Finish></Fix>
         </Link> 

@@ -42,12 +42,12 @@ return(
     </FixLayout>
     <InputForm onSubmit={inputs}>
     <H1>Nome do comprador:</H1>
-    <input type="Text" placeholder="Digite seu nome..." onChange={e => setNome(e.target.value)} required/>
+    <input data-test="client-name" type="Text" placeholder="Digite seu nome..." onChange={e => setNome(e.target.value)} required/>
     <H1>CPF do comprador:</H1>
-    <input type="number" placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)}required/>
-    <Submit>Reservar assento(s)</Submit>
+    <input data-test="client-cpf" type="number" placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)}required/>
+    <Submit data-test="book-seat-btn">Reservar assento(s)</Submit>
     </InputForm>
-    <MiniMovie>
+    <MiniMovie data-test="footer">
         <BackgroundMovie>
         <img src={session.movie.posterURL} />                
         </BackgroundMovie>
