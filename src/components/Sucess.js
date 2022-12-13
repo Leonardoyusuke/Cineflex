@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Sucess({chosenSeats,nome,cpf,itens,session}){
+export default function Sucess({chosenSeats,nome,cpf,itens,session, setChosenSeats}){
     console.log(session)
     console.log(chosenSeats)
     console.log(itens)
     console.log(cpf)
+
+
+    function clean(){
+        setChosenSeats("")
+    }
     return(<>
         <SelectMovie>Pedido feito com sucesso!</SelectMovie>
 
@@ -17,11 +22,11 @@ export default function Sucess({chosenSeats,nome,cpf,itens,session}){
         {chosenSeats.map((c)=><FixLayout2>Assentos {c}</FixLayout2>)}
         
         <Tittles>Comprador</Tittles>
-        <P1>{nome}</P1>
-        <P1>{cpf}</P1>
+        <P1>Nome:{nome}</P1>
+        <P1>CPF:{cpf}</P1>
         <Link to={"/"}>
         <Fix>
-        <Finish>Voltar pra Home</Finish></Fix>
+        <Finish onClick={clean}>Voltar pra Home</Finish></Fix>
         </Link> 
     </>
     )
