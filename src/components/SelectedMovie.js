@@ -2,10 +2,9 @@ import styled from "styled-components";
 import axios from "axios";
 import {useState, useEffect} from 'react'
 import { Link, useParams } from "react-router-dom";
-export default function SelectedMovie(){
+export default function SelectedMovie({itens,setItens}){
     const { idFilme } = useParams();
     
-    const [itens,setItens] = useState([]);
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`);
         requisicao.then(resposta => {

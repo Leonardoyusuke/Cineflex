@@ -1,17 +1,20 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function SeatsStatus({s, ids }){
+export default function SeatsStatus({s, ids,chosenSeats,setChosenSeats,seatsId,setSeatsId }){
 const [color,setColor] = useState("#C3CFD9")
 const [clicked,setClicked] = useState(false)
 
 
-function click(){
+function click(seatNumber, seatId){
     if (s.isAvailable == true && clicked == false){
         setColor("#1AAE9E")
         setClicked(true)
         ids.push(s.id)
-        console.log(ids)
+        setChosenSeats([...chosenSeats,seatNumber])
+        setSeatsId([...seatsId,seatId])
+        console.log(seatsId)
+        console.log(chosenSeats)
     }
     else if(clicked==true){
         setColor("#C3CFD9")
@@ -29,7 +32,7 @@ function click(){
 return (
     <Seat 
     color={color}
-    onClick={click}
+    onClick={() => click(s.name,s.id)}
     isAvailable={s.isAvailable}>
         {s.name}
     </Seat>

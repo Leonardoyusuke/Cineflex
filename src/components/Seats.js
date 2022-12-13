@@ -3,13 +3,12 @@ import { useState, useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import SeatsStatus from "./SeatsStatus";
-export default function Seats(){
+import Sucess from "./Sucess";
+export default function Seats({nome,setNome,cpf,setCpf,seatsId,setSeatsId,chosenSeats,setChosenSeats,session,setSession}){
     const { idSessao } = useParams();
     const ids = [];
     const navigate = useNavigate()
-    const [nome,setNome] = useState("");
-    const [cpf,setCpf] = useState("")
-    const [session, setSession] = useState(undefined)
+   
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`);
         requisicao.then(resposta => {
@@ -22,9 +21,9 @@ if (session === undefined) {
 }
 function inputs(event){
     event.preventDefault();
-    const requisicao = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many",{ids:[],name:nome, cpf:cpf} )
-
-    requisicao.then(() => navigate("/"))
+    const requisicao = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many",{ids:seatsId,name:nome, cpf:cpf} )
+    console.log(seatsId)
+    requisicao.then(() => navigate("/sucesso",))
 }
 
 return(
@@ -32,7 +31,9 @@ return(
     <SelectMovie>Selecione o(s) assento(s)</SelectMovie>
     <>
     <SetupSeats>
-    {session.seats.map((s)=> <SeatsStatus s={s} ids={ids}    />)}
+    {session.seats.map((s)=><> <SeatsStatus 
+    s={s} ids={ids} chosenSeats={chosenSeats} setChosenSeats={setChosenSeats} seatsId={seatsId} setSeatsId={setSeatsId}  />
+    </>)}
     </SetupSeats>
     <FixLayout>
     <SelectedSeat> <p>Selecionado</p></SelectedSeat>
